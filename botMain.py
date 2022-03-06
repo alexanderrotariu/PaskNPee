@@ -18,4 +18,7 @@ async def on_message(message):
     if message.content.startswith('!hello'):
         await message.channel.send('Hello!')
 
+    if message.content.endswith("?"):
+        await message.channel.send("detected question")
+
 client.run(os.getenv('TOKEN'))
