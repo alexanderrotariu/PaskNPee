@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 #MATH (RANDOM)
 randomInt = random.randint(0,4)
 benRunning = False
-awaitingQuestion = True
 
 #SETTING GIF FILES
 reactYesGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950527231099301909/benGifYes.gif'
@@ -33,7 +32,6 @@ async def on_ready():
 async def on_message(message):
     global benRunning
     global randomInt
-    global awaitingQuestion
 
     if message.author == client.user:
         return
