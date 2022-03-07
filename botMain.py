@@ -10,8 +10,9 @@ awaitingQuestion = True
 reactYesGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950527231099301909/benGifYes.gif'
 reactNoGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950520552815226912/benNoGif.gif'
 reactEwwGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950528129481469962/benGifEww.gif'
-reactLaughGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950528204181995530/benGifLaughing.gif'
+reactLaughGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950537475489665104/benlaugh.gif'
 reactSlamGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950528268807864350/benGifSlam.gif'
+reactPickupGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950538217654992956/benGifPickup.gif'
 
 #BEN RESPONSES
 benResponses = ['Yes.', 'No.', '*Laughs*', 'Eww', '*Slams Phone*']
@@ -42,7 +43,8 @@ async def on_message(message):
 
     if message.content in benStartup:
         benRunning = True
-        await message.channel.send("Ben is starting up.")
+        await message.channel.send("Ben picked up the phone.")
+        await message.channel.send(reactPickupGif)
 
     while benRunning:
         if message.content.endswith("?"):
@@ -50,7 +52,7 @@ async def on_message(message):
                 await message.channel.send(benResponses[randomInt])
                 await message.channel.send(benResponsesGifs[randomInt])
                 randomInt = random.randint(0,4)
-                await message.channel.send("Ben has decided to shutdown")
+                await message.channel.send("Ben has decided to shutdown.")
                 benRunning = False
 
             else:
