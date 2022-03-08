@@ -8,12 +8,12 @@ randomInt = random.randint(0,4)
 benRunning = False
 
 #SETTING GIF FILES
-reactYesGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950527231099301909/benGifYes.gif'
-reactNoGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950520552815226912/benNoGif.gif'
-reactEwwGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950528129481469962/benGifEww.gif'
-reactLaughGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950537475489665104/benlaugh.gif'
-reactSlamGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950528268807864350/benGifSlam.gif'
-reactPickupGif = 'https://cdn.discordapp.com/attachments/949844011466760254/950538217654992956/benGifPickup.gif'
+reactYesGif = 'https://cdn.discordapp.com/attachments/809254468700471337/950618030776406026/yes.gif'
+reactNoGif = 'https://cdn.discordapp.com/attachments/809254468700471337/950619058460586004/no.gif'
+reactEwwGif = 'https://cdn.discordapp.com/attachments/809254468700471337/950618453126021160/eww.gif'
+reactLaughGif = 'https://cdn.discordapp.com/attachments/809254468700471337/950618783419097098/laugh.gif'
+reactSlamGif = 'https://cdn.discordapp.com/attachments/809254468700471337/950617818729164820/slamphone.gif'
+reactPickupGif = 'https://cdn.discordapp.com/attachments/809254468700471337/950610478021869568/benring.gif'
 
 #BEN RESPONSES
 benResponses = ['Yes.', 'No.', '*Laughs*', 'Eww', '*Slams Phone*']
@@ -46,6 +46,7 @@ async def on_message(message):
     if message.content.startswith('!benHelp'): #to do
         embed = Embed(title="Talking Ben: ", color=0xBD9A7A)
         embed.add_field(name="Commands:", value="!callBen: starts conversation with Ben\n !stop: stops conversation with Ben")
+        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/949844011466760254/950620476818997279/benThumb.png")
 
         await message.channel.send(embed=embed)
 
@@ -60,6 +61,7 @@ async def on_message(message):
     while benRunning:
         if message.content.endswith("?"):
             if randomInt == 4:
+                #could remove the responses since we have text in the gifs now, just comment that line out?
                 await message.channel.send(benResponses[randomInt])
                 await message.channel.send(benResponsesGifs[randomInt])
                 randomInt = random.randint(0,4)
