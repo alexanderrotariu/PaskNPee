@@ -1,5 +1,7 @@
 import discord, requests, os, random
 from dotenv import load_dotenv
+from discord import Embed
+
 
 #MATH (RANDOM)
 randomInt = random.randint(0,4)
@@ -25,21 +27,7 @@ load_dotenv('.env')
 client = discord.Client()
 
 
-
-
-pfp_path = "C:\Users\pasca\Desktop\Paskbot\PaskNPee\resources\benface.jpg"
-
-fp = open(pfp_path, 'rb')
-pfp = fp.read()
-
-@client.event
-async def on_ready():
-    await client.edit_profile(avatar=pfp)
     
-
-
-
-
 @client.event
 async def on_ready():
     print('YOOOOOOO {0.user}'.format(client))
@@ -54,6 +42,15 @@ async def on_message(message):
 
     if message.content.startswith('!hello'):
         await message.channel.send('Hello!')
+
+    if message.content.startswith('!benHelp'): #to do
+        embed = Embed(title="Talking Ben: ", color=0xBD9A7A)
+        embed.add_field(name="Commands:", value="!callBen: starts conversation with Ben\n !stop: stops conversation with Ben")
+
+        await message.channel.send(embed=embed)
+
+        #await message.channel.send("!callBen: starts conversation with Ben")
+        #await message.channel.send("!stop: stops conversation with Ben")
 
     if message.content in benStartup:
         benRunning = True
