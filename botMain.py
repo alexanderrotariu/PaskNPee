@@ -2,7 +2,6 @@ import discord, requests, os, random
 from dotenv import load_dotenv
 from discord import Embed
 
-
 #MATH (RANDOM)
 randomInt = random.randint(0,4)
 benRunning = False
@@ -24,14 +23,13 @@ benShutdown = ["stop", "shutdown", "!stop", "!shutdown", "ben stop", "Ben stop",
 #CREDENTIALS 
 load_dotenv('.env')
 
+#BOT STARTUP
 client = discord.Client()
-
-
-    
 @client.event
 async def on_ready():
     print('YOOOOOOO {0.user}'.format(client))
 
+#DETECTION
 @client.event
 async def on_message(message):
     global benRunning
@@ -49,9 +47,6 @@ async def on_message(message):
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/949844011466760254/950620476818997279/benThumb.png")
 
         await message.channel.send(embed=embed)
-
-        #await message.channel.send("!callBen: starts conversation with Ben")
-        #await message.channel.send("!stop: stops conversation with Ben")
 
     if message.content in benStartup:
         benRunning = True
@@ -76,14 +71,6 @@ async def on_message(message):
         if message.content in benShutdown:
             await message.channel.send("Ben is shutting down.")
             benRunning = False
-
-        ##https://cdn.discordapp.com/attachments/949844011466760254/950520552815226912/benNoGif.gif
-
-        ##if not message.content.startswith("!benShutdown"):
-            ##await message.channel.send('Not a valid question, end in question marks or input \"!benShutdown\" to stop reading')
-
-        ##if not message.content.endswith("?"):
-            ##await message.channel.send('Not a valid question, end in question marks or input \"!benShutdown\" to stop reading')
 
         else:
             return
