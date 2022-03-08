@@ -24,6 +24,22 @@ load_dotenv('.env')
 
 client = discord.Client()
 
+
+
+
+pfp_path = "C:\Users\pasca\Desktop\Paskbot\PaskNPee\resources\benface.jpg"
+
+fp = open(pfp_path, 'rb')
+pfp = fp.read()
+
+@client.event
+async def on_ready():
+    await client.edit_profile(avatar=pfp)
+    
+
+
+
+
 @client.event
 async def on_ready():
     print('YOOOOOOO {0.user}'.format(client))
